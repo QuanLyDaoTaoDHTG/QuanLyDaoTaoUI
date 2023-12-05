@@ -1,7 +1,60 @@
 <template>
   <div class="common-layout">
     <el-container>
-      <el-aside width="200px">Aside</el-aside>
+      <el-aside width="200px">
+        <el-row class="tac">
+          <el-col :span="30">
+            <el-menu default-active="1" class="el-menu-vertical-demo">
+              <router-link to="/" class="layout1-link">
+                <el-menu-item index="1">
+                  <el-icon>
+                    <House />
+                  </el-icon>
+                  Account
+                </el-menu-item>
+              </router-link>
+              <router-link to="/Khoa" class="layout1-link">
+                <el-menu-item index="2">
+                  <el-icon>
+                    <Shop />
+                  </el-icon>
+                  <span>Khoa</span>
+                </el-menu-item>
+              </router-link>
+              <router-link to="/Lop" class="layout1-link">
+                <el-menu-item index="2">
+                  <el-icon>
+                    <Shop />
+                  </el-icon>
+                  <span>Lớp</span>
+                </el-menu-item>
+              </router-link>
+              <router-link to="/Nganh" class="layout1-link">
+                <el-menu-item index="2">
+                  <el-icon>
+                    <Shop />
+                  </el-icon>
+                  <span>Ngành</span>
+                </el-menu-item>
+              </router-link>
+              <router-link to="/ChuongTrinhDaoTao" class="layout1-link">
+                <el-menu-item index="2">
+                  <el-icon>
+                    <Shop />
+                  </el-icon>
+                  <span>Chương trình đào tạo</span>
+                </el-menu-item>
+              </router-link>
+              <el-menu-item index="8" @click="deleteCookie()">
+                <el-icon>
+                  <Close />
+                </el-icon>
+                <span>{{ decodedToken.UserName }}</span>
+              </el-menu-item>
+            </el-menu>
+          </el-col>
+        </el-row>
+      </el-aside>
       <el-container>
         <el-header>Header</el-header>
         <el-main><router-view></router-view></el-main>
@@ -10,39 +63,103 @@
   </div>
 </template>
 <script setup lang="ts">
-import {Search} from '@element-plus/icons-vue'
+import { Search } from "@element-plus/icons-vue";
 import { decode } from "jsonwebtoken";
-import Cookie from 'js-cookie'
+import Cookie from "js-cookie";
 import { ref } from "vue";
-// import router from "@/router";
+import router from "@/router";
 
-// const decodedToken = ref();
+const decodedToken = ref();
 
-// function getCode(){
-//     var token = Cookies.get('accessToken')?.toString();
-//     decodedToken.value = decode(token ?? '');
-//     console.log(decodedToken.value);
-// }
-// getCode();
+function getCode(){
+    var token = Cookie.get('accessToken')?.toString();
+    decodedToken.value = decode(token ?? '');
+    console.log(decodedToken.value);
+}
+getCode();
 
-// function deleteCookie() {
-//     // Lấy giá trị của tất cả các cookie
-//     const key = 'accessToken';
-//     var cookies = document.cookie.split(';');
+function deleteCookie() {
+    // Lấy giá trị của tất cả các cookie
+    const key = 'accessToken';
+    var cookies = document.cookie.split(';');
 
-//     // Duyệt qua từng cookie để tìm và xóa cookie với key tương ứng
-//     for (var i = 0; i < cookies.length; i++) {
-//         var cookie = cookies[i];
-//         while (cookie.charAt(0) === ' ') {
-//             cookie = cookie.substring(1);
-//         }
-//         if (cookie.indexOf(key + '=') === 0) {
-//             // Tìm thấy cookie, xóa nó bằng cách đặt hết hạn của nó về quá khứ
-//             var expirationDate = new Date(0);
-//             document.cookie = key + '=; expires=' + expirationDate.toUTCString() + '; path=/';
-//             break;
-//         }
-//     }
-//     router.push("/login");
-// }
+    // Duyệt qua từng cookie để tìm và xóa cookie với key tương ứng
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        while (cookie.charAt(0) === ' ') {
+            cookie = cookie.substring(1);
+        }
+        if (cookie.indexOf(key + '=') === 0) {
+            // Tìm thấy cookie, xóa nó bằng cách đặt hết hạn của nó về quá khứ
+            var expirationDate = new Date(0);
+            document.cookie = key + '=; expires=' + expirationDate.toUTCString() + '; path=/';
+            break;
+        }
+    }
+    router.push("/login");
+}
 </script>
+<style scoped>
+h4
+{
+  color: aliceblue;
+  font-family: Segoe UI Black ;
+  font-size: 50px;
+  font-weight: 50px;
+ 
+}
+.el-main
+{
+  background-image: url('../../assets/img/d904bfedaf47466b73e3ee87e6e431de.jpg');
+  background-repeat:  no-repeat;
+  background-size: cover;
+}
+.el-footer {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  font-size: large;
+  color: aliceblue;
+}
+.el-header {
+  display: flex;
+  font-size: large;
+  justify-content: start;
+  align-items: center;
+}
+.layout1-link span {
+  font-size: 14px;
+}
+.layout1-link span:hover {
+  transform: scale(1.08);
+}
+.layout1-link:hover {
+  text-decoration: none;
+  /* text-transform: capitalize; */
+  /* width: 100%; */
+  /* color: blue; */
+  /* font-size: 18px; */
+}
+.layout1-li {
+  padding: 0 !important;
+  text-align: center;
+}
+.el-sub-menu__title {
+  font-size: 25px !important;
+}
+.Home {
+  text-decoration: none;
+  width: 100%;
+  color: black;
+  font-size: 25px !important;
+}
+.el-row {
+  display: block !important;
+}
+.side-bar{
+  width: 230px;
+}
+.el-aside{
+  width: 230px !important;
+}
+</style>

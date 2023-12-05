@@ -7,7 +7,9 @@
 </template>
 <script setup lang="ts">
 import { ref, watch } from 'vue';
+
 import { TableColumn } from '@/components/maynghien/adminTable/Models/TableColumn';
+
 import { SearchDTOItem } from '@/components/maynghien/adminTable/Models/SearchDTOItem';
 import { handleAPIGetDropdownList } from '../Service/BasicAdminService';
 

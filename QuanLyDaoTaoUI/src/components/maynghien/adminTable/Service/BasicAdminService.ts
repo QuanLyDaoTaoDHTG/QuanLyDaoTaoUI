@@ -1,22 +1,20 @@
 
 import { AppResponse } from '../../../../Models/AppResponse'
 
-
 import { SearchRequest } from '../../BaseModels/SearchRequest'
 
 import { SearchResponse } from '../../BaseModels/SearchResponse'
 
-import { axiosInstance } from "../../../../Service/axiosConfig"
+import { axiosInstance } from "../../../../Service/axiosConfig";
 
-import {Filter} from '../../BaseModels/Filter.js'
+import Filter from '../../BaseModels/Filter'
 
-import SortByInfo from '../../BaseModels/SortByInfo.js';
-
+import SortByInfo from '../../BaseModels/SortByInfo';
 
 import { TableColumn } from '../Models/TableColumn'
 
-import { SearchDTOItem } from '../Models/SearchDTOItem'
-import { ApiActionType, CustomAction, CustomActionResponse } from '../Models/CustomAction.js'
+import { SearchDTOItem } from '../Models/SearchDTOItem.ts'
+import { ApiActionType, CustomAction, CustomActionResponse } from '../Models/CustomAction'
 import type { AxiosResponse } from 'axios'
 
 
@@ -201,3 +199,4 @@ export const handleAPIGetDropdownList = async (apiurl: string): Promise<AppRespo
     return resust;
 
 }
+

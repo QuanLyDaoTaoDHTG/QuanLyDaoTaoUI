@@ -1,16 +1,17 @@
 <template>
     <Suspense>
         <BasicAdminFormVue :tableColumns="tableColumns" :apiName="'ChuongTrinhDaoTao'" :allowAdd="true" :allowDelete="true" title="Ngành học"
-           :CustomActions="CustomActions" :allowEdit="true"></BasicAdminFormVue>
+           :CustomActions="CustomActions" :allowEdit="true" @onCustomAction="ChangePage"></BasicAdminFormVue>
     </Suspense>
 </template>
 
 <script setup lang="ts">
 
 import BasicAdminFormVue from '@/components/maynghien/adminTable/BasicAdminForm.vue';
-import { ApiActionType, CustomAction, CustomActionDataType } from '@/components/maynghien/adminTable/Models/CustomAction';
+import { ApiActionType, CustomAction, CustomActionDataType, CustomActionResponse } from '@/components/maynghien/adminTable/Models/CustomAction';
 // @ts-ignore
 import { TableColumn } from '@/components/maynghien/adminTable/Models/TableColumn.ts';
+import router from '@/router';
 const tableColumns: TableColumn[] = [
     {
         key: "id",
@@ -90,5 +91,17 @@ const tableColumns: TableColumn[] = [
 
 ]
 const CustomActions: CustomAction[] = ([
+    {
+        ActionName: "Deatail",
+        ActionLabel: "Chi Tiết",
+        ApiActiontype:ApiActionType.PUT,
+        IsRowAction: true,
+        DataType: CustomActionDataType.RowId,
+    }
 ]);
+
+function ChangePage(item: CustomActionResponse){
+    if(item.Action.ActionName == "Deatail")
+    router.push("/ChuongTrinhDaoTao/" + item.Data.id);
+}
 </script>
