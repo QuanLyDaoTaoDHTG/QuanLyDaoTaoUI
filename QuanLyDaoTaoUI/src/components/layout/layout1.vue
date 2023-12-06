@@ -67,6 +67,12 @@
                 </el-icon>
                 <span>{{ decodedToken.UserName }}</span>
               </el-menu-item>
+              <el-menu-item index="7" @click="openDialog = true">
+                <el-icon>
+                  <Close />
+                </el-icon>
+                <span>đổi mật khẩu</span>
+              </el-menu-item>
             </el-menu>
           </el-col>
         </el-row>
@@ -77,6 +83,7 @@
       </el-container>
     </el-container>
   </div>
+  <changePassword :openDialog="openDialog" @close="openDialog = false" :user-name="decodedToken.UserName"/>
 </template>
 <script setup lang="ts">
 import { Search } from "@element-plus/icons-vue";
@@ -85,7 +92,8 @@ import Cookie from "js-cookie";
 import { ref } from "vue";
 import router from "@/router";
 import * as jwt from "jsonwebtoken";
-
+//@ts-ignore
+import changePassword from '../Account/ChangePassword.vue'
 const decodedToken = ref();
 
 function getCode() {
@@ -154,6 +162,8 @@ const GV = ref<boolean>(false);
 const SV = ref<boolean>(false);
 
 getRoles();
+const openDialog = ref<boolean>(false);
+
 </script>
 <style scoped>
 h4 {
