@@ -64,7 +64,7 @@ const tableColumns: TableColumn[] = [
         label: "Password",
         enableEdit: false,
         enableCreate: true,
-        hidden: false,
+        hidden: true,
         width: 500,
         required: true,
         sortable: true,
@@ -74,13 +74,32 @@ const tableColumns: TableColumn[] = [
 
     },
     {
-        key: "khoa",
+        key: "khoaId",
         label: "Khoa",
         width: 1000,
         sortable: true,
         enableEdit:  true,
 
         enableCreate:  true,
+        required:true,
+        hidden: true,
+        showSearch: false,
+        inputType: "dropdown",
+        dropdownData: {
+            displayMember: "tenKhoa",
+            keyMember: "id",
+            apiUrl: "Khoa",
+        },
+
+    },
+    {
+        key: "tenKhoa",
+        label: "Khoa",
+        width: 1000,
+        sortable: true,
+        enableEdit:  false,
+
+        enableCreate:  false,
         required:true,
         hidden: false,
         showSearch: false,
@@ -93,13 +112,32 @@ const tableColumns: TableColumn[] = [
 
     },
     {
-        key: "lop",
+        key: "lopId",
         label: "Lớp",
         width: 1000,
         sortable: true,
         enableEdit:  true,
 
         enableCreate:  true,
+        required:true,
+        hidden: true,
+        showSearch: false,
+        inputType: "dropdown",
+        dropdownData: {
+            displayMember: "tenLop",
+            keyMember: "id",
+            apiUrl: "lop",
+        },
+
+    },
+    {
+        key: "tenLop",
+        label: "Tên lớp",
+        width: 1000,
+        sortable: true,
+        enableEdit:  false,
+
+        enableCreate:  false,
         required:true,
         hidden: false,
         showSearch: false,
