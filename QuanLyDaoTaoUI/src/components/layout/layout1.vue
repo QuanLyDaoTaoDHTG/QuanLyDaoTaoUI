@@ -12,7 +12,7 @@
               >
                 <el-menu-item index="1">
                   <el-icon>
-                    <House />
+                    <User />
                   </el-icon>
                   Account
                 </el-menu-item>
@@ -20,7 +20,7 @@
               <router-link to="/Khoa" class="layout1-link" v-if="admin == true">
                 <el-menu-item index="2">
                   <el-icon>
-                    <Shop />
+                  <Reading />
                   </el-icon>
                   <span>Khoa</span>
                 </el-menu-item>
@@ -28,7 +28,7 @@
               <router-link to="/Lop" class="layout1-link" v-if="admin">
                 <el-menu-item index="3">
                   <el-icon>
-                    <Shop />
+                  <House />
                   </el-icon>
                   <span>Lớp</span>
                 </el-menu-item>
@@ -36,7 +36,7 @@
               <router-link to="/Nganh" class="layout1-link" v-if="admin">
                 <el-menu-item index="4">
                   <el-icon>
-                    <Shop />
+                  <List />
                   </el-icon>
                   <span>Ngành</span>
                 </el-menu-item>
@@ -44,7 +44,7 @@
               <router-link to="/ChuongTrinhDaoTao" class="layout1-link" v-if="admin">
                 <el-menu-item index="5">
                   <el-icon>
-                    <Shop />
+                  <Edit />
                   </el-icon>
                   <span>Chương trình đào tạo</span>
                 </el-menu-item>
@@ -56,29 +56,29 @@
               >
                 <el-menu-item index="6">
                   <el-icon>
-                    <Shop />
+                  <Avatar />
                   </el-icon>
                   <span>Thông tin sinh viên</span>
                 </el-menu-item>
               </router-link>
               <el-menu-item index="7" @click="deleteCookie()">
                 <el-icon>
-                  <Close />
+                <SwitchButton />
                 </el-icon>
                 <span>{{ decodedToken.UserName }}</span>
               </el-menu-item>
               <el-menu-item index="7" @click="openDialog = true">
                 <el-icon>
-                  <Close />
+                <Setting />
                 </el-icon>
-                <span>đổi mật khẩu</span>
+                <span>Đổi mật khẩu</span>
               </el-menu-item>
             </el-menu>
           </el-col>
         </el-row>
       </el-aside>
       <el-container>
-        <el-header>Header</el-header>
+        <el-header></el-header>
         <el-main><router-view></router-view></el-main>
       </el-container>
     </el-container>
@@ -92,6 +92,18 @@ import Cookie from "js-cookie";
 import { ref } from "vue";
 import router from "@/router";
 import * as jwt from "jsonwebtoken";
+import {
+  Menu as IconMenu,
+  User,
+  SwitchButton,
+  Setting,
+  Edit,
+  House,
+  List,
+  Avatar,
+  Reading
+ 
+} from '@element-plus/icons-vue'
 //@ts-ignore
 import changePassword from '../Account/ChangePassword.vue'
 const decodedToken = ref();
@@ -173,7 +185,7 @@ h4 {
   font-weight: 50px;
 }
 .el-main {
-  background-image: url("../../assets/img/d904bfedaf47466b73e3ee87e6e431de.jpg");
+  background-image: linear-gradient(to right, #0000FF, #FF00A0);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -224,5 +236,14 @@ h4 {
 }
 .el-aside {
   width: 230px !important;
+  width:200px;
+  height:750px;
+  background-color: #d9ecff;
+}
+.common-layout{
+  background-color: #d9ecff;
+}
+.el-menu{
+  background-color: #d9ecff;
 }
 </style>

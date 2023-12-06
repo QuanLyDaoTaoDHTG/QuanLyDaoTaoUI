@@ -82,6 +82,7 @@ const login = async () => {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-image: url("https://quanlykho.vn/wp-content/uploads/2020/09/1920x1080_ky-nang-quan-ly-thoi-gian-1310.jpg");
 }
 
 main.el-main {
